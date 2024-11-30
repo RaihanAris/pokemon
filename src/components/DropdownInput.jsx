@@ -5,7 +5,6 @@ function DropdownInput ({pokemon, setSelectedPokemon, setIsChange}){
       <select name="selectPokemon" id="selectPokemon" onChange={(event)=>{
         const value = event.currentTarget.value;
         setSelectedPokemon(JSON.parse(value));
-        setIsChange(true);
       }}>
         <option value="null">Pilih Pokemon</option>
         {pokemon.map((item) => {

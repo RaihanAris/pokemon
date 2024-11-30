@@ -39,13 +39,14 @@ const HomePage = () => {
     setIsChange(false);
   }
 
+  // ----- REVISI ------
   // cek perubahan pada dropdown untuk menghilangkan hasil dan continue
   const [isChange, setIsChange] = useState(false);
   useEffect(() => {
-    if (isChange === true) {
+    if (selectedPokemon !== null) {
       setIsSubmit(false)
     }
-  },[isChange])
+  },[selectedPokemon])
 
   function checkPokemonValue(event){
     event.preventDefault()
@@ -63,7 +64,7 @@ const navigate = useNavigate()
     <>
       <div className="container pt-10">
         <form onSubmit={handleSubmit} className="flex items-center justify-center gap-2">
-          <DropdownInput pokemon={pokemon} setSelectedPokemon={setSelectedPokemon} setIsChange={setIsChange}/>
+          <DropdownInput pokemon={pokemon} setSelectedPokemon={setSelectedPokemon} />
           <button className="bg-green-600 rounded-md px-3 py-2 text-white hidden" id="submit" type="submit">
             Submit
           </button>
