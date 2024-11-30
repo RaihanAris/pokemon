@@ -1,18 +1,17 @@
 import React, { useState } from "react";
-import { Select } from "flowbite-react";
-
-const DropdownInput = (props) => {
-  const handleSelect = (event) => {
-    props.handleChange(event.target.value);
-  };
+function DropdownInput ({pokemon, setSelectedPokemon, setIsChange}){
   return (
     <>
-      <select name="selectPokemon" id="selectPokemon" onChange={handleSelect}>
-        <option value={props.default}>{props.default}</option>
-        {props.pokemon.map((pokemon) => {
+      <select name="selectPokemon" id="selectPokemon" onChange={(event)=>{
+        const value = event.currentTarget.value;
+        setSelectedPokemon(JSON.parse(value));
+        setIsChange(true);
+      }}>
+        <option value="null">Pilih Pokemon</option>
+        {pokemon.map((item) => {
           return (
-            <option key={pokemon.url} value={pokemon.url}>
-              {pokemon.name}
+            <option key={item.url} value={JSON.stringify({ name: item.name, url: item.url })}>
+              {item.name}
             </option>
           );
         })}
